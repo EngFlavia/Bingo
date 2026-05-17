@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App Bingo</title>
+    <script>
+      if (new URL(window.location.href).searchParams.get("view") === "display") {
+        document.documentElement.classList.add("display-route");
+      }
+    </script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/js/app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell" data-view="controller">
+      <section class="top-panel" aria-labelledby="last-draws-title">
+        <div class="title-block">
+          <p class="eyebrow">Bingo 1 a 75</p>
+          <h1 id="last-draws-title">&Uacute;ltimos sorteados</h1>
+        </div>
+
+        <ol class="last-draws" id="last-draws" aria-live="polite"></ol>
+      </section>
+
+      <section class="controls" id="controls" aria-label="Controles do sorteio">
+        <button class="button primary" id="draw-button" type="button">Sortear</button>
+        <button class="button secondary" id="reset-button" type="button">Resetar</button>
+        <button class="button cast" id="cast-button" type="button" aria-describedby="cast-status">
+          <span class="cast-icon" aria-hidden="true"></span>
+          Transmitir para TV
+        </button>
+        <button class="button secondary hidden" id="reconnect-button" type="button">Reconectar</button>
+        <button class="button ghost hidden" id="stop-cast-button" type="button">Encerrar transmiss&atilde;o</button>
+        <a class="button ghost" id="display-link" href="/?view=display" target="_blank" rel="noreferrer">Tela da TV</a>
+        <p class="cast-status hidden" id="cast-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="board-section" aria-labelledby="board-title">
+        <div class="board-heading">
+          <h2 id="board-title">Cartela de n&uacute;meros</h2>
+          <p id="draw-count">0 de 75 sorteados</p>
+        </div>
+        <div class="number-area" id="number-area" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>
